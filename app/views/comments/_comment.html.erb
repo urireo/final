@@ -1,0 +1,33 @@
+<!--Displays comments for that post it was called from -->
+<div class="container  font-weight-lighter border-info rounded-lg border text-primary">
+   <div class="row  border  rounded-lg border">
+     <div class="col-sm-2 text-wrap" id="background-color">
+       <h6> <strong>  <%= comment.user.name %>  </strong> said:  </h6>
+     </div>
+     <div class="col-sm-7 text-wrap text-sm-left">
+       <%= comment.content %>
+     </div>
+     <div class="col-sm-3 text-wrap">
+       <%= link_to "Edit ", edit_post_comment_path(@post, comment) %>
+       <%= image_tag("edit-icon.jpg",border: 0, style:'width:8%') %> |
+       <%= link_to "Delete", [@post, comment], method: :delete  %>
+       <%= image_tag("delete-icon.png",border: 0, style:'width:8%') %>
+     </div>
+  </div>
+
+  <div class="row  border text-warning rounded-lg border">
+    <div class="col-sm-12">
+      <% if comment.replies.present? %>
+        <div id="replies">
+         <!-- The `comments` method returns an array-like collection, so we can call `each` on it: -->
+          <%= render comment.replies %>
+       </div>
+     <% end %>
+   </div>
+ </div>
+
+  <div class="container text-success font-weight-lighter  rounded-lg">
+    <h6> Reply to  <%= comment.user.name %>'s comment:</h6>
+    <%= render :partial => "replies/form", locals: {reply: comment.replies.new} %>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<!--#Prints all comments for one post , called for EDIT-->
+<%= form_for [@post, comment] do |f| %>
+  <div class="row  border text-success font-weight-lighter border-warning rounded-lg ">
+
+
+      <div class="field col-sm-3 text-sm text-wrap" style="padding-top: 15px;">
+        <%= f.label :user %>
+        <%= f.collection_select :user_id, User.all, :id, :name, include_blank: false %>
+      </div>
+      <div class="field  col-sm-6 text-sm text-wrap" style="padding-top: 15px;">
+        <div class="field" style="display:none">
+          <%= f.label :content, "Comment" %>
+        </div>
+        <div class="field" style="padding-top: 15px;" >
+          <%= f.text_field "content", size:"40", placeholder: "Write another comment to this post"  %>
+        </div>
+      </div>
+      <div class="actions field text-wrap col-sm-3 text-sm-center" style="padding-top: 15px;">
+         <%= f.submit %>
+      </div>
+
+
+  </div>
+<!--    <button type="button" class="btn btn-primary" onclick="window.history.back();">Cancel</button> -->
+
+<% end %>

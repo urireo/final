@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   <link rel="stylesheet" href="stylesheets/pages.scss" >
+    <title>Welcome to the Community Mural Portal!</title>
+  </head>
+  <body  id="home" data-spy="scroll" data-target=".navbar" data-offset="100" class="">
+    <div class="container  font-weight-lighter">
+
+      <div class="row   text-success text-sm-center p-3 mb-2">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-8 text-sm-center p-3 mb-2">
+          <h3>New Post</h3>
+          <%= render 'form', post: @post  %>
+        </div>
+        <div class="col-sm-2">
+        </div>
+      </div>
+      </div>
+  </body>
+</html>

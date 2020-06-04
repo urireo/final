@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Home page</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <% if !flash[:alert].nil? %>
+      <br><br><br><p class="my_alert"><%= flash[:alert] %></p>
+  <% end %>
+
+  <%= yield %>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   <link rel="stylesheet" href="stylesheets/pages.scss" >
+    <title>Welcome to the Community Mural Portal!</title>
+  </head>
+  <body  id="home" data-spy="scroll" data-target=".navbar" data-offset="100" class="">
+<!-- /navbar -->
+    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-success fixed-top">
+      <div class="container bg-success " >
+      <a class="navbar-brand order-1 mr-0 text-left" href="https://www.codethedream.org" target="_blank">
+        <%= image_tag("CTD_Logo_Primary-2.png",border: 0, style:'width:10%') %>
+      </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse bg-success " id="navbarNavAltMarkup">
+          <div class="navbar-nav bg-success">
+            <a class="nav-item nav-link text-dark" href="pages/about">About</a>
+            <a class="nav-item nav-link text-dark" href="users#index"> Users </a>
+
+          </div>
+        </div>
+      </div>
+    </nav>
+<!-- /navbar -->
+    <p id="notice"><%= notice %></p>
+    <h1 id="posts" class="display-4 text-center my-5 text-muted"><br>
+      List  of the Community Mural Posts
+    </h1>
+    <div class="col-md p-3 mb-2 text-white text-sm-center">
+
+      <div class="btn-group mt-4" role="group" aria-label="Callout buttons">
+        <a class="btn btn-primary" btn-lg" href="/posts/new" > Create a new Post</a>
+      </div>
+
+
+
+    </div>
+      <div class="container ">
+      <div class="card-deck">
+        <% @posts.each do |post| %>
+        <div class="col-md-6 col-lg-4">
+          <div class="card mb-3"> <!-- col-md-6 col-lg-4 -->
+            <div class="card-img-top mb-3 mx-auto">
+              <%= link_to image_tag(post.image, style:'width:100%') if post.image.attached? %>
+              <div class="card-body">
+                <h4 class="card-title"><%= post.title %></h4>
+                <p class="card-text"><%= post.content %></p>
+                <strong><p class="card-text">-<%= post.user.name %></p></strong>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">
+                  <%= link_to 'See Comments', post %>  |
+                  <%= link_to 'Edit Post', edit_post_path(post) %>  |
+                  <%= link_to 'Destroy', post, method: :delete %>
+                  <!-- <#%= link_to "Delete ", [post], method: :delete, data: {confirm: 'Are you sure you want to delete?' }  %> -->
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <br><br>
+  </body>
+</html>
